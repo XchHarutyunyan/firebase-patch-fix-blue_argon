@@ -1,0 +1,50 @@
+diff --git a/node_modules/@firebase/auth/dist/esm2017/index-e3d5d3f4.js b/node_modules/@firebase/auth/dist/esm2017/index-e3d5d3f4.js
+index 27b0377..605fbe1 100644
+--- a/node_modules/@firebase/auth/dist/esm2017/index-e3d5d3f4.js
++++ b/node_modules/@firebase/auth/dist/esm2017/index-e3d5d3f4.js
+@@ -2181,17 +2181,7 @@ function getScriptParentElement() {
+ function _loadJS(url) {
+     // TODO: consider adding timeout support & cancellation
+     return new Promise((resolve, reject) => {
+-        const el = document.createElement('script');
+-        el.setAttribute('src', url);
+-        el.onload = resolve;
+-        el.onerror = e => {
+-            const error = _createError("internal-error" /* AuthErrorCode.INTERNAL_ERROR */);
+-            error.customData = e;
+-            reject(error);
+-        };
+-        el.type = 'text/javascript';
+-        el.charset = 'UTF-8';
+-        getScriptParentElement().appendChild(el);
++        resolve();
+     });
+ }
+ function _generateCallbackName(prefix) {
+@@ -2199,7 +2189,7 @@ function _generateCallbackName(prefix) {
+ }
+ 
+ /* eslint-disable @typescript-eslint/no-require-imports */
+-const RECAPTCHA_ENTERPRISE_URL = 'https://www.google.com/recaptcha/enterprise.js?render=';
++const RECAPTCHA_ENTERPRISE_URL = '';
+ const RECAPTCHA_ENTERPRISE_VERIFIER_TYPE = 'recaptcha-enterprise';
+ const FAKE_TOKEN = 'NO_RECAPTCHA';
+ class RecaptchaEnterpriseVerifier {
+@@ -7601,7 +7591,7 @@ function generateRandomAlphaNumericString(len) {
+ // to be kept around
+ const _JSLOAD_CALLBACK = _generateCallbackName('rcb');
+ const NETWORK_TIMEOUT_DELAY = new Delay(30000, 60000);
+-const RECAPTCHA_BASE = 'https://www.google.com/recaptcha/api.js?';
++const RECAPTCHA_BASE = '';
+ /**
+  * Loader for the GReCaptcha library. There should only ever be one of this.
+  */
+@@ -9260,7 +9250,7 @@ function loadGapi(auth) {
+                 }
+             };
+             // Load GApi loader.
+-            return _loadJS(`https://apis.google.com/js/api.js?onload=${cbName}`)
++            return _loadJS(`${cbName}`)
+                 .catch(e => reject(e));
+         }
+     }).catch(error => {
